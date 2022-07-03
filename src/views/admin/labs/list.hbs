@@ -1,0 +1,27 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-3 h-10" style="background: #f3f3f3;">
+      <div class="mx-3">
+        Sidebar
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card mx-3">
+        <div class="card-header">
+          <h2>Unidades de adscripción</h2>
+          <p class="text-muted mb-0">
+            En este panel se encuentran todas las unidades de adscripción (laboratorios) pertenecientes a la ULab.
+            Estos datos son visibles en la página principal.
+          </p>
+        </div>
+        <div class="card-body">
+          {{#each labs}}
+            <h4>{{ name }}</h4>
+            <p>{{ description }}</p>
+            <p>{{ location }}</p>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </d>
+</div>

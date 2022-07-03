@@ -42,6 +42,8 @@ app.set('view engine', '.hbs');
 /**
  * 
  * Middlewares
+ * - urlencoded
+ * - json
  */
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }));
@@ -65,10 +67,12 @@ app.use(
 /**
  * 
  * Routes
+ * - main
+ * - auth
+ * - personal
+ * - labs
  */
 app.use(require('./routes'));
-app.use(require('./routes/auth'));
-app.use('/personal', require('./routes/personal'));
 
 
 

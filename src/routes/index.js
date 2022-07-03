@@ -1,19 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+router.get(
+  '/',
+  (req, res) => {
+    res.send('Hello from /ROUTES')
+  }
+)
+
+router.use('/admin', require('./admin'));
 
 
-/**
- * Home page
- */
-router.get('/', (req, res) => {
-  res.send('Running happyly');
-});
-
-
-
-/**
- * 
- * export routes
- */
 module.exports = router;
