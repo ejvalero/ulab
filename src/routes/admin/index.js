@@ -13,7 +13,7 @@ router.get(
   }
 )
 
-router.use('/labs', require('./labs'))
+router.use('/laboratorios', require('./labs'))
 
 
 

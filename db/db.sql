@@ -32,8 +32,9 @@ DESCRIBE users;
 CREATE TABLE labs(
   id INT(11) NOT NULL,
   name VARCHAR(150) NOT NULL,
-  area VARCHAR(255) NOT NULL,
+  url VARCHAR(250) NOT NULL,
   slug VARCHAR(150) NOT NULL,
+  area VARCHAR(255) NOT NULL,
   location TEXT,
   description TEXT
 );

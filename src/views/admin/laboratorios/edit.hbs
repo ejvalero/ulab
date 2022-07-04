@@ -1,0 +1,45 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-3 h-10" style="background: #f3f3f3;">
+      <div class="mx-3">
+        Sidebar
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card mx-3">
+        <div class="card-header">
+          <h2>Editar nueva unidad de adscripción</h2>
+          <p class="text-muted mb-0">
+            Este panel permite actualizar las unidades de adscripción (laboratorios), pertenecientes a la ULab.
+            Estos datos serán visibles en la página principal.
+          </p>
+        </div>
+        <div class="card-body">
+          <form action="/admin/laboratorios/{{lab.slug}}/edit" method="POST">
+            <div class="form-group my-4">
+              <label for="name" class="form-label mb-1"><strong>Unidad</strong></label>
+              <input type="text" class="form-control" name="name" value="{{lab.name}}">
+            </div>
+            <div class="form-group my-4">
+              <label for="area" class="form-label mb-1"><strong>Área de investigación</strong></label>
+              <input type="text" class="form-control" name="area" value="{{lab.area}}">
+            </div>
+            <div class="form-group my-4">
+              <label for="description" class="form-label mb-1"><strong>Descripción</strong></label>
+              <textarea class="form-control" name="description" rows="6">{{lab.description}}</textarea>
+            </div>
+            <div class="form-group my-4">
+              <label for="location" class="form-label mb-1"><strong>Ubicación</strong></label>
+              <textarea class="form-control" name="location" rows="3">{{lab.location}}</textarea>
+            </div>
+            <div class="form-group mt-4 mb-0">
+              <button class="btn btn-primary">
+                Guardar datos
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </d>
+</div>
