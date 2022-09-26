@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src"
+    "dev": "nodemon src",
+    "start": "node src",
+    "faker": "node src/lib/faker.js"
   },
   "keywords": [],
   "author": "Emanuel Valero",
@@ -26,6 +28,7 @@
     "timeago.js": "4.0.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
     "nodemon": "^2.0.18"
   }
 }

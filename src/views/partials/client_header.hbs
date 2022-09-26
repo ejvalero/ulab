@@ -1,0 +1,14 @@
+  <div class="mt-5 mb-4">
+    <h1 class="my-0 page-main-title fw-bold">{{title}}</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        {{#each breadcrumbs}}
+          {{#if active}}
+            <li class="breadcrumb-item active">{{name}}</li>
+          {{else}}
+            <li class="breadcrumb-item {{active}}"><a href="{{link}}">{{name}}</a></li>
+          {{/if}}
+        {{/each}}
+      </ol>
+    </nav>
+  </div>

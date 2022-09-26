@@ -1,45 +1,102 @@
 <div class="container py-5">
-  <div class="row">
-    <div class="col-md-3 h-10" style="background: #f3f3f3;">
-      <div class="mx-3">
-        Sidebar
-      </div>
-    </div>
-    <div class="col-md-9">
-      <div class="card mx-3">
-        <div class="card-header">
-          <h2>Editar nueva unidad de adscripción</h2>
-          <p class="text-muted mb-0">
-            Este panel permite actualizar las unidades de adscripción (laboratorios), pertenecientes a la ULab.
-            Estos datos serán visibles en la página principal.
-          </p>
+      <div class="card">
+        <!-- Card header-->
+        <div class="card-header p-4">
+          <h2>{{platform.header.edit.title}}, {{data.name}}</h2>
+          <p class="text-muted">{{platform.header.edit.message}}</p>
+          <div class="mb-0">
+            <a href="/admin/laboratorios" class="btn btn-outline-primary btn-sm">
+              <i class="fa-solid fa-arrow-left"></i> {{buttons.all}}
+            </a>
+            <a href="/admin/laboratorios/{{data.usbid}}" class="btn btn-outline-primary btn-sm">
+              {{data.name}}
+            </a>
+          </div>
         </div>
+        <!-- End of card header-->
+
+        <!-- Card body content -->
         <div class="card-body">
-          <form action="/admin/laboratorios/{{lab.slug}}/edit" method="POST">
+          <form action="/admin/laboratorios/{{data.usbid}}/edit" method="POST">
             <div class="form-group my-4">
-              <label for="name" class="form-label mb-1"><strong>Unidad</strong></label>
-              <input type="text" class="form-control" name="name" value="{{lab.name}}">
+              <label for="name" class="form-label mb-1">
+                <strong>Datos de la unidad de adscripción</strong>
+              </label>
+              <div class="row">
+                <div class="col-sm-12 col-md-4">
+                  <input type="text" class="form-control" name="name" placeholder="Unidad de adscripción" value="{{data.name}}">
+                </div>
+                <div class="col-sm-12 col-md-4">
+                  <input type="text" class="form-control" name="area" placeholder="Nombre de la unidad de adscripción" value="{{data.area}}">
+                </div>
+                <div class="col-sm-12 col-md-4">
+                  <input type="text" class="form-control" name="usbid" placeholder="USBID" value="{{data.usbid}}">
+                </div>
+              </div>
             </div>
-            <div class="form-group my-4">
-              <label for="area" class="form-label mb-1"><strong>Área de investigación</strong></label>
-              <input type="text" class="form-control" name="area" value="{{lab.area}}">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <label for="lab_head" class="form-label"><strong>Jefe de laboratorio actual</strong></label>
+                  <input type="text" class="form-control" name="lab_head" placeholder="Jefe de laboratorio actual" value="{{data.lab_head}}">
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <label for="email" class="form-label"><strong>Correo electrónico</strong></label>
+                  <input type="text" class="form-control" name="email" placeholder="Correo electrónico" value="{{data.email}}">
+                </div>                
+              </div>              
             </div>
             <div class="form-group my-4">
               <label for="description" class="form-label mb-1"><strong>Descripción</strong></label>
-              <textarea class="form-control" name="description" rows="6">{{lab.description}}</textarea>
+              <textarea class="form-control" name="description" placeholder="Descripción" rows="6">{{data.description}}</textarea>
             </div>
             <div class="form-group my-4">
-              <label for="location" class="form-label mb-1"><strong>Ubicación</strong></label>
-              <textarea class="form-control" name="location" rows="3">{{lab.location}}</textarea>
+              <label class="form-label mb-1">
+                <strong>Ubicación</strong>
+                <br>
+                <i class="text-muted">
+                  <small>
+                    <u>Ingrese siguiendo este formato</u>: XXX-XXX. Edificio, piso, oficina.
+                    <br>
+                    <u>Ejemplos</u>: 
+                    <strong>(1)</strong> PA4B-024. Edificio Pabellón 4B, piso 2, oficina 024.
+                    <strong>(2)</strong> P01-001. Edificio Pabellón 1, oficina 001.
+                  </small>
+                </i>
+              </label>
+              <input type="text" class="form-control" name="location_main_office" value="{{data.location_main_office}}">
             </div>
-            <div class="form-group mt-4 mb-0">
+            <div class="form-group my-4">
+              <label class="form-label mb-1">
+                <strong>Número telefónico pricipal</strong>
+                <br>
+                <i class="text-muted">
+                  <small>
+                    <u>Ingrese siguiendo este formato</u>: +58212XXXXXXX para el número, XXXX para la extensión
+                    <br>
+                    <u>Ejemplo</u>: +582129066700
+                  </small>
+                </i>
+              </label>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="phone_main_office" value="{{data.phone_main_office}}">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" name="extension_main_office" value="{{data.extension_main_office}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-5 mb-0">
               <button class="btn btn-primary">
                 Guardar datos
               </button>
+              <a href="/admin/laboratorios/{{data.usbid}}" class="btn btn-secondary">
+                Cancelar
+              </a>
             </div>
           </form>
         </div>
+        <!-- End of card body content -->
       </div>
-    </div>
-  </d>
 </div>

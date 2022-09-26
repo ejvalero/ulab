@@ -1,0 +1,88 @@
+<div class="container py-5">
+      <div class="card">
+        <!-- Card header-->
+        <div class="card-header p-4">
+          <h2>{{data.name}}</h2>
+          <p class="text-muted mt-0">{{platform.header.show.message}}</p>
+          <div class="mb-0 d-flex justify-content-between align-items-center">
+            <a href="/admin/laboratorios" class="btn btn-outline-primary btn-sm">
+              <i class="fa-solid fa-arrow-left"></i> {{buttons.all}}
+            </a>
+            <a href="/admin/laboratorios/{{data.usbid}}/edit" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-pencil"></i>
+              <span> {{buttons.edit}}</span>
+            </a>
+          </div>
+        </div>
+        <!-- End of card header-->
+
+        <!-- Card body content -->
+        <div class="card-body p-4">
+          {{#if success}}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fa-solid fa-check"></i>
+              {{success}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+          {{#if failed }}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+              {{failed}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+          {{#if data}}
+            <ul class="list-group list-group-numbered">
+              <li class="list-group-item d-flex justify-content-between align-items-start py-3">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Información general</div>
+                  <p class="text-muted m-0">
+                    <u>Nombre</u>: {{data.name}}
+                    <br>
+                    <u>Área de investigación</u>: {{data.area}}
+                    <br>
+                    <u>Teléfono</u>: {{data.phone_main_office}}, ext {{data.extension_main_office}}
+                    <br>
+                    <a href="mailto:{{data.main_email}}" class="mt-1 btn btn-sm btn-light btn-contact">
+                      <i class="fa-solid fa-envelope mr-1"></i> Enviar correo
+                    </a>
+                    <a href="mailto:{{data.main_email}}" class="mt-1 btn btn-sm btn-light btn-contact">
+                      <i class="fa-solid fa-users mr-1"></i> Consultar personal
+                    </a>
+                  </p>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start py-3">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Descripción</div>
+                  <p class="text-muted m-0">
+                    {{data.description}}
+                  </p>
+                </div>
+                <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start py-3">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Ubicación</div>
+                  <p class="text-muted m-0">
+                    {{data.location_main_office}}
+                  </p>
+                </div>
+                <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+            </ul>
+            <div class="mt-1 text-end">
+              <small>
+                <span class="text-muted"><strong>Ultima actualización de los datos</strong>: Por definir</span>
+              </small>
+            </div>
+          {{else}}
+            <div class="alert alert-primary d-flex justify-content-center py-auto my-0">
+              <p class="text-primary m-0">No hay registros disponibles</p>
+            </div>
+          {{/if}}
+        </div>
+        <!-- End of card body content -->
+      </div>
+</div>

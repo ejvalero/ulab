@@ -1,0 +1,65 @@
+<div class="container">
+  <!-- Main title and breadcrumbs -->
+  <div class="mt-5 mb-4">
+    <h1 class="my-0 page-main-title fw-bold">{{lab.title}}</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Página principal</a></li>
+        <li class="breadcrumb-item"><a href="/docencia-e-investigacion">{{lab.title}}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{lab.data.name}}</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End of main title and breadcrumbs -->
+
+  <div class="row">
+    <div class="col-sm-12 col-md-3 p-3">
+      <div class="bg-body rounded-4 content-box">
+        <ul class="nav nav-item flex-column mb-auto sidebar-item p-2">
+          <li class="nav-item m-1">
+            <a href="/docencia-e-investigacion" class="nav-link" aria-current="page">
+              {{lab.name}}
+            </a>
+          </li>
+          {{#each lab.components.items}}
+          <li class="nav-item m-1 sidebar-item">
+            <a href="/docencia-e-investigacion/{{slug}}" class="nav-link" aria-current="page">          
+              {{name}}
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-9 p-3">
+      <div class="p-4 bg-body rounded-4 content-box h-100">
+        <h3>{{lab.data.name}}</h3>
+        <p class="text-muted">{{lab.data.area}}</p>
+        <a class="btn btn-primary rounded-lg btn-contact" href="mailto:{{lab.data.email}}">
+          <i class="fa-solid fa-envelope mr-1"></i>
+        </a>
+        <a class="btn btn-primary rounded-lg btn-contact" href="/docencia-e-investigacion/{{lab.data.usbid}}/personal">
+          <i class="fa-solid fa-user-check"></i>
+          <span>Personal</span>
+        </a>
+        <a class="btn btn-primary rounded-lg btn-contact" href="/docencia-e-investigacion/{{lab.data.usbid}}/secciones">
+          <i class="fa-solid fa-puzzle-piece"></i>
+          <span>Secciones</span>
+        </a>
+        <a class="btn btn-primary rounded-lg btn-contact disabled" href="/docencia-e-investigacion/{{lab.data.usbid}}/servicios">
+          <i class="fa-solid fa-address-book"></i>
+          <span>Servicios</span>
+        </a>
+        <hr>
+            <p><strong>Objetivos</strong>: {{lab.data.description}}</p>
+            <p><strong>Dirección física</strong>: {{lab.data.location_main_office}}</p>
+            <p><strong>Jefe de laboratorio actual</strong>: {{lab.data.lab_head}}</p>
+            <p><strong>Números telefónicos</strong>: {{lab.data.phone_main_office}}</p>
+            <p><strong>Dirección de correo electrónico</strong>: {{lab.data.email}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,10 +1,8 @@
 module.exports = {
-
   database: {
-    host:     'localhost',
-    user:     'root',
-    password: 'ser10la2015$',
-    database: 'ulab_v001'
-  }
-
+    host:     'sql.freedb.tech',
+    user:     'freedb_ulabusb',
+    password: 'Rthyp#7VQW$&D8*',
+    database: 'freedb_ulab_v0.0.1'
+  },
 }

@@ -1,0 +1,84 @@
+<div class="container py-5">
+      <div class="card">
+        <!-- Card header-->
+        <div class="card-header p-4">
+          <h2>Personal</h2>
+          <p class="text-muted">
+            En este panel se encuentra todo el personal perteneciente a la ULab.
+            Estos datos pueden estar visibles en la página principal.
+          </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="/admin" class="btn btn-outline-primary btn-sm">
+              <i class="fa-solid fa-arrow-left"></i> Panel de control
+            </a>
+            <a href="/admin/personal/add" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-plus"></i>
+              <span> {{buttons.add}}</span>
+            </a>
+          </div>
+        </div>
+        <!-- End of card header-->
+
+        <!-- Card body content -->
+        <div class="card-body p-4">
+          {{#if success}}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fa-solid fa-check"></i>
+              {{success}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+          {{#if failed }}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+              {{failed}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+          {{#if data}}
+            <table class="table table-sm align-middle persons-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Cargo</th>
+                  <th>Correo</th>
+                  <th>Ubicación</th>
+                  <th>Teléfonos</th>
+                  <th>Unidad de adscripción</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each data}}
+                  <tr>
+                    <td>
+                      <a href="/admin/personal/{{ username }}">
+                        {{ name }}, {{lastname}}
+                      </a>
+                    </td>
+                    <td>{{ job }}</td>
+                    <td>{{ email }}</td>
+                    <td>{{ location_main }}</td>
+                    <td>{{ phone_main }}, {{ phone_prof }}</td>
+                    <td>{{ ulab_unit }}</td>
+                    <td>
+                      <a type="button" onclick="customConfirm(`{{usbid}}`, '/admin/personal', `{{name}} {{lastname}}`)" title="Eliminar" class="btn btn-sm btn-danger">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </a>
+                      <a href="/admin/personal/{{usbid}}/edit" title="Editar" class="btn btn-sm btn-info text-white">
+                        <i class="fa-solid fa-pencil"></i>
+                      </a>
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          {{else}}
+            <div class="alert alert-primary d-flex justify-content-center py-auto my-0">
+              <p class="text-primary m-0">No hay registros disponibles</p>
+            </div>
+          {{/if}}
+        </div>
+        <!-- End of card body content -->
+      </div>
+</div>

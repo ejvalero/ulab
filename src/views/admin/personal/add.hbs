@@ -1,0 +1,183 @@
+<div class="container py-5">
+      <div class="card">
+        <!-- Card header-->
+        <div class="card-header p-4">
+          <h2>{{platform.header.add.title}}</h2>
+          <p class="text-muted">{{platform.header.add.message}}</p>
+          <p class="mb-0">
+            <a href="/admin/personal" class="btn btn-outline-primary btn-sm">
+              <i class="fa-solid fa-arrow-left"></i> {{buttons.all}}
+            </a>
+          </p>
+        </div>
+        <!-- End of card header-->
+
+        <!-- Card body content -->
+        <div class="card-body">
+          {{#if success}}
+            <div class="alert alert-success alert-dismissible fade show">
+              <i class="fa-solid fa-check"></i>
+              {{success}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+          {{#if failed }}
+            <div class="alert alert-danger alert-dismissible fade show">
+              <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+              {{failed}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+
+          <form action="/admin/personal/add" method="POST">
+            <div class="form-group my-4">
+              <label class="form-label mb-1">
+                <strong>Nombre</strong>
+                <br>
+                <i class="text-muted"><small>Complete los campos con su nombre y su apellido y un resumen de su actividad profesional.</small></i>
+              </label>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="name" placeholder="Nombre">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" name="lastname" placeholder="Apellido">
+                </div>
+              </div>
+              <textarea class="form-control mt-2" name="biography" rows="6" placeholder="Resumen profesional"></textarea>
+            </div>
+            <div class="form-group my-4">
+              <label class="form-label mb-1">
+                <strong>Información institucional</strong>
+                <br>
+                <i class="text-muted">
+                  <small>
+                    Ingrese su dirección de correo electrónico institucional y el cargo que desempeña,
+                    según lo indicado por el Departamento de Recursos Humanos de la USB.
+                  </small>
+                </i>
+              </label>
+              <div class="row">
+                <div class="col-md-5 col-sm-12">
+                  <input type="email" class="form-control mt-0 mt-sm-2 my-md-0" name="email" placeholder="Correo electrónico institucional">
+                </div>
+                <div class="col-md-7 col-sm-12">
+                  <input type="text" class="form-control mt-sm-2 my-md-0" name="job" placeholder="Cargo que desempeña">
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <select class="form-select mt-sm-2" name="type" id="employeeType" aria-label="Floating label select">
+                    <option selected >Tipo de personal</option>
+                    <option value="Administrativo">Administrativo</option>
+                    <option value="Docente">Docente</option>
+                    <option value="Técnico">Técnico</option>
+                    <option value="Obrero">Obrero</option>
+                  </select>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <select class="form-select mt-sm-2" name="status_usb" id="employeeStatus" aria-label="Floating label select">
+                    <option selected value="Activo">Seleccione su status</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Jubilado">Jubilado</option>
+                  </select>
+                </div>
+                <!-- TODO: preguuntar si forma parte del consejo asesor -->
+                <div class="col-md-4 col-sm-12">
+                  <select class="form-select mt-sm-2" name="ulab_unit" id="ulab_unit" aria-label="Floating label select">
+                    <option selected value="">Adscripción</option>
+                    <option value="Dirección">Dirección</option>
+                    <option value="Consejo Asesor">Consejo asesor</option>
+                    <option value="Unidad de Administración">Unidad de Administración</option>
+                    <option value="Coordinación de Importaciones">Coordinación de Importaciones</option>
+                    <option value="Coordinación de Adquisiciones">Coordinación de Adquisiciones</option>
+                    <option value="Coordinación de la Calidad">Coordinación de la Calidad</option>
+                    <option value="Coordinación de Enlace">Coordinación de Enlace</option>
+                    <option value="Gestor de Desechos">Gestor de Desechos</option>
+                    <option value="Laboratorio A">Laboratorio A</option>
+                    <option value="Laboratorio B">Laboratorio B</option>
+                    <option value="Laboratorio C">Laboratorio C</option>
+                    <option value="Laboratorio D">Laboratorio D</option>
+                    <option value="Laboratorio E">Laboratorio E</option>
+                    <option value="Laboratorio F">Laboratorio F</option>
+                    <option value="Laboratorio G">Laboratorio G</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group my-4">
+              <label class="form-label mb-1">
+                <strong>Información de contacto y localización</strong>
+                <br>
+                <i class="text-muted">
+                  <small>
+                    Ingrese su ubicación principal <u>siguiendo este formato</u>: XXX-XXX. Edificio, piso, oficina.
+                    <br>
+                    <u>Ejemplos</u>: 
+                    <strong>(1)</strong> PA4B-024. Edificio Pabellón 4B, piso 2, oficina 024.
+                    <strong>(2)</strong> P01-001. Edificio Pabellón 1, oficina 001.
+                  </small>
+                </i>
+              </label>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <input type="text" class="form-control" name="location_main" placeholder="Ubicación principal">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control" name="phone_main" placeholder="Número telefónico">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control" name="phone_extension_main" placeholder="Extensión telefónica">
+                </div>
+              </div>
+              <label class="form-label mb-1">
+                <i class="text-muted">
+                  <small>
+                    Ingrese la ubicación de su oficina de profesor, <u>siguiendo este formato</u>: XXX-XXX. Edificio, piso, oficina.
+                  </small>
+                </i>
+              </label>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <input type="text" class="form-control" name="location_adm" placeholder="Ubicación de profesor">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control" name="phone_adm" placeholder="Número telefónico">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control" name="phone_extension_adm" placeholder="Extensión telefónica">
+                </div>
+              </div>
+
+              <label class="form-label mb-1">
+                <i class="text-muted">
+                  <small>
+                    Ingrese la ubicación de su laboratorio, <u>siguiendo este formato</u>: XXX-XXX. Edificio, piso, oficina.
+                  </small>
+                </i>
+              </label>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <input type="text" class="form-control" name="location_lab" placeholder="Ubicación de laboratorio">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control" name="phone_lab" placeholder="Número telefónico">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control" name="phone_extension_lab" placeholder="Extensión telefónica">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mt-5 mb-0">
+              <button class="btn btn-primary">
+                Guardar datos
+              </button>
+              <a href="/admin/personal" class="btn btn-secondary">
+                Cancelar
+              </a>
+            </div>
+          </form>
+        </div>
+        <!-- End of card body content -->
+      </div>
+</div>

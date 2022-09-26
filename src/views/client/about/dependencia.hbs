@@ -1,0 +1,265 @@
+<div class="container">
+
+
+    <!-- Main title and breadcrumbs -->
+    {{> client_header title='Sobre la ULab' breadcrumbs = content.breadcrumbs}}
+
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <div class="col-sm-12 col-md-3 p-3">
+        <div class="bg-body rounded-4 content-box">
+          <ul class="nav nav-item flex-column mb-auto sidebar-item p-2">
+            {{#each content.sections}}
+            <li class="nav-item m-1 sidebar-item">
+              <a 
+                href="/sobre-la-ulab/{{slug}}"
+                class="{{active}} nav-link d-flex justify-content-between align-items-center"
+                aria-current="page"
+              >          
+                 <span>{{title}}</span><i class="fa-solid fa-circle-chevron-right"></i>
+              </a>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+      <!-- End of sidebar -->
+
+      <!-- Main content -->
+      <div class="col-sm-12 col-md-9 p-3">
+        <div class="p-4 bg-body rounded-4 content-box h-100">
+          <h3>{{content.data.name}}</h3>
+          <a class="btn btn-sm rounded-lg btn btn-light text-primary" href="/sobre-la-ulab/dependencias">
+            <i class="fa-solid fa-arrow-left-long"></i> Volver a las dependencias
+            </a>
+          <hr>
+
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">General</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Datos de contacto</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="myTabContent">
+            
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                {{#if content.data.slug}}
+                  {{#if content.data.emptyContent}}
+                    <div class="alert alert-primary mt-3">
+                      <i class="fa-solid fa-person-digging"></i>
+                      Contenido en contrucción
+                    </div>
+                  {{else}}
+                    <div class="mt-3 p-2">
+                      {{#if content.data.description}}
+                        <p>{{content.data.description}}</p>
+                      {{/if}}
+                      {{#if content.data.mision}}
+                        <p><strong>Misión</strong>: {{content.data.mision}}</p>
+                      {{/if}}
+                      {{#if content.data.vision}}
+                        <p><strong>Visión</strong>: {{content.data.vision}}</p>
+                      {{/if}}
+                      {{#if content.data.objectives}}
+                        <p><strong>Objetivos</strong>: {{content.data.objectives}}</p>
+                      {{/if}}
+                    </div>
+                  {{/if}}
+                {{/if}}
+            </div>
+
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+              <div class="row my-2">
+                
+                <div class="deps-info col-md-12 col-lg-6">
+                  <div class="card my-2">
+                    <div class="card-body p-3">
+
+                      {{!-- Personal --}}
+                      <div class="mb-4">
+                        <div class="d-flex align-items-center">
+                          <div class="rounded-circle text-primary d-flex justify-content-center align-items-center w-3em">
+                            <i class="fa-solid fa-users text-white "></i>
+                          </div>
+                          <h5 class="mx-3 my-auto text-secondary">Personal</h5>
+                        </div>
+                        <p class="mt-3 mb-0 lh-sm text-muted">
+                          <small>
+                            {{#if content.persons.head}}
+                              <strong>Director(a)</strong>: 
+                              <i>{{content.persons.head.degree}}</i>
+                              {{content.persons.head.name}} {{content.persons.head.lastname}}
+                              <br>
+                            {{/if}}
+                            {{#if content.persons.coordinator}}
+                              <strong>Coordinador(a)</strong>: 
+                              <i>{{content.persons.coordinator.degree}}</i>
+                              {{content.persons.coordinator.name}} {{content.persons.coordinator.lastname}}
+                              <br>
+                            {{/if}}
+                            {{#if content.persons.administrator}}
+                              <strong>Administrador(a)</strong>: 
+                              <i>{{content.persons.administrator.degree}}</i>
+                              {{content.persons.administrator.name}} {{content.persons.administrator.lastname}}
+                              <br>
+                            {{/if}}
+                            {{#if content.persons.planner}}
+                              <strong>Planificador(a)</strong>: 
+                              <i>{{content.persons.planner.degree}}</i>
+                              {{content.persons.planner.name}} {{content.persons.planner.lastname}}
+                            {{/if}}
+                            {{#if content.persons.assistant}}
+                              <strong>Asistente</strong>: 
+                              <i>{{content.persons.assistant.degree}}</i>
+                              {{content.persons.assistant.name}} {{content.persons.assistant.lastname}}
+                              <br>
+                            {{/if}}
+                            {{#if content.persons.secretary}}
+                              <strong>Secretaria(o)</strong>:
+                              <i>{{content.persons.secretary.degree}}</i>
+                              {{content.persons.secretary.name}} {{content.persons.secretary.lastname}}
+                            {{/if}}
+                          </small>
+                        </p>
+                      </div>
+
+                      {{!-- Dirección física --}}
+                      <div class="mb-4">
+                        <div class="d-flex align-items-center">
+                          <div class="rounded-circle text-primary d-flex justify-content-center align-items-center w-3em">
+                            <i class="fa-solid fa-location-dot text-white "></i>
+                          </div>
+                          <h5 class="mx-3 my-auto text-secondary">Dirección física</h5>
+                        </div>
+                        <p class="mt-3 mb-0 lh-sm text-muted">
+                          {{#if content.location.building}}
+                            <small>
+                              {{content.location.building}}, {{content.location.floor}}, {{content.location.office}}
+                              <br>
+                              {{content.location.location}},
+                              {{content.location.municipality}}. Edo. {{content.location.state}}.
+                              <br>
+                              {{content.location.city}}, 
+                              {{content.location.country}}
+                              <br>
+                              Apartado Postal: 89000
+                            </small>
+                          {{else}}
+                            <div class="alert alert-danger px-2 py-2">
+                              <i class="fa-solid fa-times mx-2"></i>
+                              Dirección física no disponible
+                            </div>
+                          {{/if}}
+                        </p>
+                      </div>
+                      
+                      {{!-- Teléfonos --}}
+                      <div class="mb-4">
+                        <div class="d-flex align-items-center">
+                          <div class="rounded-circle text-primary d-flex justify-content-center align-items-center w-3em">
+                            <i class="fa-solid fa-mobile-retro text-white "></i>
+                          </div>
+                          <h5 class="mx-3 my-auto text-secondary">Teléfonos</h5>
+                        </div>
+                        <p class="mt-3 mb-0 lh-sm text-muted">
+                          <small>
+                            Edificio de Energética, Planta Baja, Oficina ENE-001
+                            <br>
+                            Valle de Sartenejas, Parroquia Baruta, Municipio Baruta,
+                            <br>
+                            Edo. Miranda. Gran Caracas, Venezuela
+                            <br>
+                            Apartado Postal: 89000
+                          </small>
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="deps-info col-md-12 col-lg-6">
+                  <div class="card my-2">
+                    <div class="card-body p-3">
+
+                      {{!-- Email --}}
+                      <div class="mb-4">
+                        <div class="d-flex align-items-center">
+                          <div class="rounded-circle text-primary d-flex justify-content-center align-items-center w-3em">
+                            <i class="fa-solid fa-envelope text-white "></i>
+                          </div>
+                          <h5 class="mx-3 my-auto text-secondary">Correo Electrónico</h5>
+                        </div>
+                        <p class="my-3 lh-sm text-muted">
+                          {{#if content.data.email}}
+                            <small>
+                              {{content.data.email}}
+                            </small>
+                          {{else}}
+                            <div class="alert alert-danger px-2 py-2">
+                              <i class="fa-solid fa-times mx-2"></i>
+                              Correo electrónico no disponible
+                            </div>
+                          {{/if}}
+                        </p>
+                      </div>
+
+                      {{!-- Horarios --}}
+                      <div class="mb-4">
+                        <div class="d-flex align-items-center">
+                          <div class="rounded-circle text-primary d-flex justify-content-center align-items-center w-3em">
+                            <i class="fa-solid fa-clock text-white "></i>
+                          </div>
+                          <h5 class="mx-2 my-auto text-secondary">Horario</h5>
+                        </div>
+                        <p class="mb-4 mt-3 lh-sm text-muted">
+                          <small>
+                            {{content.data.open_days}}
+                            <br>
+                            {{content.data.open_hours}}
+                          </small>
+                        </p>
+                      </div>
+
+                      {{!-- Enlaces de interés --}}
+                      <div class="mb-4">
+                        <div class="d-flex align-items-center">
+                          <div class="rounded-circle text-primary d-flex justify-content-center align-items-center w-3em">
+                            <i class="fa-solid fa-link text-white "></i>
+                          </div>
+                          <h5 class="mx-2 my-auto text-secondary">Enlaces de interés</h5>
+                        </div>
+                        <p class="mb-4 mt-3 lh-sm text-muted">
+                          <small>
+                            Edificio de Energética, Planta Baja, Oficina ENE-001
+                            <br>
+                            Valle de Sartenejas, Parroquia Baruta, Municipio Baruta,
+                            <br>
+                            Edo. Miranda. Gran Caracas, Venezuela
+                            <br>
+                            Apartado Postal: 89000
+                          </small>
+                        </p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Main content -->
+      
+    </div>
+</div>

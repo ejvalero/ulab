@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="row">
+    <!-- Content -->
+    <div class="col-sm-12 col-md-7 col-lg-8">
+
+    <!-- Main title and breadcrumbs -->
+    {{> client_header title=post.title breadcrumbs = breadcrumbs}}
+
+      <div class="py-3">
+        <div class="row h-100">
+          <div class="col-12 mb-4">
+            <div class="card mb-4 bg-body rounded-4 content-box post-grid-card">
+              <img class="card-img-top post-img" src="{{post.img}}" alt="{{post.title}}">
+              <div class="card-body lh-sm">
+                <p class="card-text">
+                  <span class="fw-bold">{{post.excerpt}}</span>
+                  <br>
+                  <small class="text-muted">
+                    <i class="fa-solid fa-calendar"></i>
+                    {{post.published_at}}
+                  </small>
+                </p>
+                <hr>
+                {{{post.content}}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- End of content  -->
+  </div>
+
+</div>

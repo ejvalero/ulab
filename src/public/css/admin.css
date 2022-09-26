@@ -17,9 +17,28 @@ a {
   color: darkblue;
 }
 
+.btn {
+  border-radius: 16px;
+}
+
 .btn-primary {
   background-color: darkblue;
   border-color: darkblue;
+}
+
+.btn-outline-primary {
+  border-color: darkblue;
+  color: darkblue;
+}
+
+.btn-contact {
+  background-color: rgba(0,0,0,.03);
+  border-radius: 12px;
+}
+
+.btn-contact:hover {
+  background-color: #92aace;
+  color: white;
 }
 
 
@@ -30,10 +49,21 @@ a {
   font-size: 0.95rem;
 }
 
-.labs-table thead tr th:nth-child(1) {
+.labs-table th:nth-child(1) {
   width: 15%;
 }
 
-.labs-table thead tr th:nth-child(4) {
+.labs-table th:nth-child(2) {
   width: 25%;
+}
+
+.labs-table th:nth-child(3) {
+  width: 50%;
+}
+
+/**
+ * Menu dropdown
+ */
+.dropdown-menu {
+  min-width: 13rem;
 }

@@ -1,0 +1,57 @@
+<div class="container">
+
+    <!-- Main title and breadcrumbs -->
+    {{> client_header title='Sobre la ULab' breadcrumbs = content.breadcrumbs}}
+
+
+    <div class="row">
+
+      <!-- Sidebar -->
+      <div class="col-sm-12 col-md-5 col-lg-3 p-3">
+        <div class="bg-body rounded-4 content-box">
+          <ul class="nav nav-item flex-column mb-auto sidebar-item p-2">
+            {{#each content.sections}}
+            <li class="nav-item m-1 sidebar-item">
+              <a 
+                href="/sobre-la-ulab{{#if slug}}/{{slug}}{{/if}}"
+                class="{{active}} nav-link d-flex justify-content-between align-items-center"
+                aria-current="page"
+              >          
+                 <span>{{title}}</span><i class="fa-solid fa-circle-chevron-right"></i>
+              </a>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+      <!-- End of sidebar -->
+
+      <!-- Main content -->
+      <div class="col-sm-12 col-md-7 col-lg-9 p-3">
+        <div class="p-4 bg-body rounded-4 content-box h-100">
+          <h3>{{content.section.title}}</h3>
+          <p class="text-muted">{{content.section.description}}</p>
+          <hr>
+          <div class="lh-lg mt-3">
+            {{#if content.data.content}}
+              {{{content.data.content}}}
+              {{#if content.data.documents_url}}
+                <a href="/{{content.data.documents_url}}">
+                  <i class="fa-solid fa-floppy-disk"></i> Descargar documento anexo
+                </a>
+              {{/if}}
+            {{else}}
+              <div class="alert alert-primary my-3">
+                <p class="text-primary my-0">
+                  <i class="fa-solid fa-person-digging"></i>
+                  Contenido en contrucción
+                </p>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      <!-- Main content -->
+
+
+</div>

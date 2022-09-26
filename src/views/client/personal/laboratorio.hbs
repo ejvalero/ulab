@@ -1,0 +1,186 @@
+<div class="container">
+  <!-- Main title and breadcrumbs -->
+  <div class="mt-5 mb-4">
+    <h1 class="my-0 page-main-title fw-bold">Personal ULab</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Página principal</a></li>
+        <li class="breadcrumb-item"><a href="/docencia-e-investigacion">{{personal.title}}</a></li>
+        <li class="breadcrumb-item"><a href="/docencia-e-investigacion/{{slug}}">{{location}}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Personal</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End of main title and breadcrumbs -->
+
+  <div class="row">
+    <div class="col-sm-12 col-md-3 p-3">
+      <div class="bg-body rounded-4 content-box">
+        <ul class="nav nav-item flex-column mb-auto sidebar-item p-2">
+          <li class="nav-item m-1">
+            <a href="/docencia-e-investigacion" class="nav-link" aria-current="page">
+              {{personal.name}}
+            </a>
+          </li>
+          {{#each personal.components.items}}
+          <li class="nav-item m-1 sidebar-item">
+            <a href="/docencia-e-investigacion/{{slug}}" class="nav-link" aria-current="page">          
+              {{name}}
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-9 p-3">
+      <div class="p-4 bg-body rounded-4 content-box h-100">
+        <h3>{{location}}</h3>
+        <p class="text-muted">{{name}}</p>
+        <hr>
+        <ul class="nav nav-tabs" id="personalTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="academico-tab" data-bs-toggle="tab" data-bs-target="#academico" type="button" role="tab" aria-controls="academico" aria-selected="true">Académico</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="administrativo-tab" data-bs-toggle="tab" data-bs-target="#administrativo" type="button" role="tab" aria-controls="administrativo" aria-selected="false">Administrativo</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="tecnico-tab" data-bs-toggle="tab" data-bs-target="#tecnico" type="button" role="tab" aria-controls="tecnico" aria-selected="false">Técnico</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="obrero-tab" data-bs-toggle="tab" data-bs-target="#obrero" type="button" role="tab" aria-controls="obrero" aria-selected="false">Obrero</button>
+          </li>
+        </ul>
+        <div class="tab-content">
+
+          <div class="tab-pane fade show active" id="academico" role="tabpanel" aria-labelledby="academico-tab">
+            <div class="row">
+            {{#each personal.academico}}
+              <div class="col-4">
+                <div class="card my-2">
+                  <img src="https://i.pravatar.cc/150?img={{id}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">{{name}} {{lastname}}</h4>
+                    <p class="my-0 text-mutted">{{job}}</span></p>
+                    <p class="mt-0 mb-3">
+                      <small>{{location_main}}</small>
+                    </p>
+                    <a class="btn btn-primary btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-solid fa-envelope mr-1"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-info btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-brands fa-twitter text-white"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+            </div>
+          </div>
+
+          <div class="tab-pane fade show" id="administrativo" role="tabpanel" aria-labelledby="administrativo-tab">
+            <div class="row">
+            {{#each personal.administrativo}}
+              <div class="col-4">
+                <div class="card my-2">
+                  <img src="https://i.pravatar.cc/150?img={{id}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">{{name}} {{lastname}}</h4>
+                    <p class="my-0 text-mutted">{{job}}</span></p>
+                    <p class="mt-0 mb-3">
+                      <small>{{location_main}}</small>
+                    </p>
+                    <a class="btn btn-primary btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-solid fa-envelope mr-1"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-info btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-brands fa-twitter text-white"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+            </div>
+          </div>
+
+          <div class="tab-pane fade show" id="tecnico" role="tabpanel" aria-labelledby="tecnico-tab">
+            <div class="row">
+            {{#each personal.tecnico}}
+              <div class="col-4">
+                <div class="card my-2">
+                  <img src="https://i.pravatar.cc/150?img={{id}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">{{name}} {{lastname}}</h4>
+                    <p class="my-0 text-mutted">{{job}}</span></p>
+                    <p class="mt-0 mb-3">
+                      <small>{{location_main}}</small>
+                    </p>
+                    <a class="btn btn-primary btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-solid fa-envelope mr-1"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-info btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-brands fa-twitter text-white"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+            </div>
+          </div>
+          
+          <div class="tab-pane fade show" id="obrero" role="tabpanel" aria-labelledby="obrero-tab">
+            <div class="row">
+            {{#each personal.obrero}}
+              <div class="col-4">
+                <div class="card my-2">
+                  <img src="https://i.pravatar.cc/150?img={{id}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h4 class="card-title">{{name}} {{lastname}}</h4>
+                    <p class="my-0 text-mutted">{{job}}</span></p>
+                    <p class="mt-0 mb-3">
+                      <small>{{location_main}}</small>
+                    </p>
+                    <a class="btn btn-primary btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-solid fa-envelope mr-1"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-info btn-sm btn-contact" href="mailto:email@email.com">
+                      <i class="fa-brands fa-twitter text-white"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const items = document.querySelectorAll('.nav-personal')
+
+  const loc = window.location.href.split('type=')[1];
+  items.forEach(item => {
+    item.classList.remove('active');
+    if(item.classList.value.includes(loc)) {
+          item.classList.add('active');
+    }
+  })
+</script>

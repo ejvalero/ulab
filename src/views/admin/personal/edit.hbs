@@ -1,0 +1,266 @@
+<div class="container py-5">
+      <div class="card">
+        <!-- Card header-->
+        <div class="card-header p-4">
+          <h2>{{platform.header.edit.title}}</h2>
+          <p class="text-muted">{{platform.header.edit.message}}</p>
+          <p class="mb-0">
+            <a href="/admin/personal" class="btn btn-outline-primary btn-sm">
+              <i class="fa-solid fa-arrow-left"></i> {{buttons.all}}
+            </a>
+          </p>
+        </div>
+        <!-- End of card header-->
+
+        <!-- Card body content -->
+        <div class="card-body">
+          {{#if success}}
+            <div class="alert alert-success alert-dismissible fade show">
+              <i class="fa-solid fa-check"></i>
+              {{success}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+          {{#if failed }}
+            <div class="alert alert-danger alert-dismissible fade show">
+              <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+              {{failed}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+
+          <form action="/admin/personal/add" method="POST">
+            <div class="form-group my-4">
+              <label class="form-label mb-1">
+                <strong>Información personal</strong>
+              </label>
+              <div class="row">
+                <div class="col">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="par_name" value="{{data.name}}">
+                    <label for="name">Nombre</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="per_lastname" value="{{data.lastname}}">
+                    <label for="lastname">Apellido</label>
+                  </div>
+                </div>
+              </div>
+              <textarea class="form-control mt-2" name="per_biography" rows="6" placeholder="Resumen profesional" value="{{data.biography}}"></textarea>
+            </div>
+            <div class="form-group my-5">
+              <label class="form-label mb-1 mt-3">
+                <strong>Información institucional</strong>
+                <br>
+                <i class="text-muted">
+                  <small>
+                    Ingrese su dirección de correo electrónico institucional y el cargo que desempeña,
+                    según lo indicado por el Departamento de Recursos Humanos de la USB.
+                  </small>
+                </i>
+              </label>
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-floating">
+                    <input type="email" class="form-control mt-0 mt-sm-2 my-md-0" name="ins_email" value="{{data.email}}">
+                    <label for="job">Coreeo electrónico</label>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control mt-sm-2 my-md-0" name="ins_job" value={{data.job}}>
+                    <label for="job">Cargo</label>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-floating">
+                    <select class="form-select mt-sm-2" name="ins_type">
+                      <option value="{{data.type}}">{{data.type}}</option>
+                      <option value="Docente">Docente</option>
+                      <option value="Técnico">Técnico</option>
+                      <option value="Obrero">Obrero</option>
+                    </select>
+                    <label for="type">Tipo de empleado</label>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-floating">
+                    <select class="form-select mt-sm-2" name="ins_status_usb">
+                      <option value="{{data.status_usb}}">{{data.status_usb}}</option>
+                      <option value="Activo">Activo</option>
+                      <option value="Jubilado">Jubilado</option>
+                    </select>
+                    <label for="status_usb">Estatus laboral</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group my-5">
+              <label class="form-label mb-1 mt-3">
+                <strong>Información de adscripción</strong>
+              </label>
+              <div class="row">
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-floating">
+                    <select class="form-select" name="ulab_unit" id="dep_unit">
+                      <option selected value={{data.ulab_unit}}>{{data.ulab_unit}}</option>
+                      <option value="Dirección">Dirección</option>
+                      <option value="Otras unidades de apoyo">Otras unidades de apoyo</option>
+                      <option value="Unidad de Administración">Unidad de Administración</option>
+                      <option value="Coordinación de Importaciones">Coordinación de Importaciones</option>
+                      <option value="Coordinación de Adquisiciones">Coordinación de Adquisiciones</option>
+                      <option value="Coordinación de la Calidad">Coordinación de la Calidad</option>
+                      <option value="Gestor de Desechos">Gestor de Desechos</option>
+                      <option value="Laboratorio A">Laboratorio A</option>
+                      <option value="Laboratorio B">Laboratorio B</option>
+                      <option value="Laboratorio C">Laboratorio C</option>
+                      <option value="Laboratorio D">Laboratorio D</option>
+                      <option value="Laboratorio E">Laboratorio E</option>
+                      <option value="Laboratorio F">Laboratorio F</option>
+                      <option value="Laboratorio G">Laboratorio G</option>
+                    </select>
+                    <label for="ulab_unit">Dependencia o unidad de Adscripción</label>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="dep_section" value={{data.section}}>
+                    <label for="section">Sección o unidad de apoyo</label>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="dep_laboratory" value={{data.section}}>
+                    <label for="section">Laboratorio</label>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" name="dep_laboratory_head" value="">
+                    <label class="form-check-label" for="dep_laboratory_head">
+                      Active este campo si es <i class="text-dark fw-bold">Jefe de laboratorio</i>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" name="dep_section_head" value="" checked>
+                    <label class="form-check-label" for="dep_section_head">
+                      Active este campo si es <i class="text-dark fw-bold">Jefe de sección</i>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group my-5">
+              <label class="form-label mb-1 mt-3">
+                <strong>Información de contacto y localización</strong>
+                <br>
+                <i class="text-muted">
+                  <small>
+                    Ingrese su ubicación principal <u>siguiendo este formato</u>: XXX-XXX. Edificio, piso, oficina.
+                    <br>
+                    <u>Ejemplos</u>: 
+                    <strong>(1)</strong> PA4B-024. Edificio Pabellón 4B, piso 2, oficina 024.
+                    <strong>(2)</strong> P01-001. Edificio Pabellón 1, oficina 001.
+                  </small>
+                </i>
+              </label>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="location_main" value="{{data.location_main}}">
+                    <label for="location_main">Oficina principal</label>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="phone_main" value="{{data.phone_main}}">
+                    <label for="phone_main">Número telefónico principal</label>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="phone_extension_main" value="{{data.phone_extension_main}}">
+                    <label for="phone_main">Extensión telefónica principal</label>
+                  </div>
+                </div>
+              </div>
+              <label class="form-label mb-1">
+                <i class="text-muted">
+                  <small>
+                    Ingrese la ubicación de su oficina asignada por el departamento (en caso de ser profesor)
+                    o por la ULab (en caso de ser personal administrativo o técnico).
+                  </small>
+                </i>
+              </label>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="location_adm" value="{{data.location_adm}}">
+                    <label for="location_adm">Oficina personal</label>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="phone_adm" value="{{data.phone_adm}}">
+                    <label for="phone_adm">Número telefónico asignado</label>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="phone_extension_adm" value="{{data.phone_extension_adm}}">
+                    <label for="phone_extension_adm">Extensión telefónica asignada</label>
+                  </div>
+                </div>
+              </div>
+
+              <label class="form-label mb-1">
+                <i class="text-muted">
+                  <small>
+                    Ingrese la ubicación del laboratorio que le ha asignado la ULab.
+                    En caso de que éste sea su espacio de trabajo.
+                  </small>
+                </i>
+              </label>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="location_lab" value="{{data.location_lab}}">
+                    <label for="phone_adm">Laboratorio asignado</label>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="phone_lab" value="{{data.phone_lab}}">
+                    <label for="phone_adm">Número telefónico</label>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" name="phone_extension_lab" value={{data.phone_extension_lab}}>
+                    <label for="phone_extension_lab">Extensión telefónica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mt-5 mb-0">
+              <button class="btn btn-primary">
+                Guardar datos
+              </button>
+              <a href="/admin/personal" class="btn btn-secondary">
+                Cancelar
+              </a>
+            </div>
+          </form>
+        </div>
+        <!-- End of card body content -->
+      </div>
+</div>

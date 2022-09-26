@@ -1,96 +1,40 @@
 const express = require('express');
 const router = express.Router();
-var slugify = require('slugify');
+const { platform } = require('../../config');
+const controllers = require('../../controllers');
 
-// db connection
-const pool = require('../../db');
+
+// custom labs data
+const viewLabsData = { platform: platform.content.labs, buttons: platform.buttons }
+const viewLabData = { platform: platform.content.lab, buttons: platform.buttons }
+const id = 'usbid';
+const layout = 'admin';
+const dbTable = 'labs'
+
+
+// paths
+const pathAll = 'admin/laboratorios';
+const pathAdd = 'admin/laboratorios/add';
+const pathEdit = 'admin/laboratorios/edit';
+const pathSingle = 'admin/laboratorios/detail';
 
 
 // view to list all labs
-router.get(
-  '/',
-  async (req, res) => {
-    const labs = await pool.query('SELECT * FROM labs');
-    res.render('admin/laboratorios/list', { labs });
-  }
-)
+router.get('/', controllers.list(pathAll, layout, dbTable, viewLabsData));
 
+// add new lab
+router.get('/add', controllers.addPage(pathAdd, layout, viewLabData));
+router.post('/add', controllers.add(dbTable, id));
 
-// view to add new lab
-router.get(
-  '/add',
-  (req, res) => {
-    res.render('admin/laboratorios/add');
-  }
-);
+// delete labs
+router.get(`/:${id}/delete`, controllers.delete(dbTable));
 
+// edit labs
+router.get(`/:${id}/edit`, controllers.editPage(pathEdit, layout, dbTable, viewLabData));
+router.post(`/:${id}/edit`, controllers.update(id, dbTable));
 
-// form to add new lab
-router.post(
-  '/add',
-  async (req, res) => {
-    const { name, area, location, description } = req.body;
-    const nameSlug = slugify(name, {lower: true, strict: true});
-    const urlcomponents = [ req.headers.host, req.baseUrl.slice(1), nameSlug ];
-
-    const newLab = {
-      name,
-      slug: nameSlug,
-      url: urlcomponents.join('/'),
-      area,
-      description,
-      location
-    };
-
-    await pool.query(
-      'INSERT INTO labs SET ?',
-      [ newLab ]
-    );
-
-    res.redirect('/admin/laboratorios');
-  }
-);
-
-
-// form to delete labs
-router.get(
-  '/:slug/delete',
-  async (req, res) => {
-    const { slug } = req.params;
-    await pool.query('DELETE FROM labs WHERE slug = ?', [slug]);
-    res.redirect('/admin/laboratorios');
-  }
-);
-
-
-// wiew to edit labs
-router.get(
-  '/:slug/edit',
-  async (req, res) => {
-    const { slug } = req.params;
-    const labs = await pool.query('SELECT * FROM labs WHERE slug = ?', [slug]);
-    res.render('admin/laboratorios/edit', { lab: labs[0] });
-  }
-)
-
-
-router.post(
-  '/:slug/edit',
-  async (req, res) => {
-    const { slug } = req.params;
-    const { name, area, description, location } = req.body;
-
-    const newLab = {
-      name,
-      area,
-      description,
-      location
-    }
-
-    pool.query('UPDATE labs SET ? WHERE slug = ?', [newLab, slug]);
-    res.redirect('/admin/laboratorios');
-  }
-)
+// get single record
+router.get(`/:${id}`, controllers.getOne(pathSingle, layout, id, dbTable, viewLabData));
 
 
 module.exports = router;

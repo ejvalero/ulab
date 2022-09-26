@@ -1,0 +1,75 @@
+<div class="container py-5">
+      <div class="card">
+        <!-- Card header-->
+        <div class="card-header p-4">
+          <h2>{{platform.header.title}}</h2>
+          <p class="text-muted">{{platform.header.message}}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="/admin" class="btn btn-outline-primary btn-sm">
+              <i class="fa-solid fa-arrow-left"></i> {{buttons.controlPanel}}
+            </a>
+            <a href="/admin/laboratorios/add" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-plus"></i>
+              <span> {{buttons.add}}</span>
+            </a>
+          </div>
+        </div>
+        <!-- End of card header-->
+
+        <!-- Card body content -->
+        <div class="card-body p-4">
+          {{#if success}}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fa-solid fa-check"></i>
+              {{success}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+          {{#if failed }}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+              {{failed}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+          {{#if data}}
+            <table class="table table-sm align-middle labs-table my-0">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Área de investigación</th>
+                  <th>Ubicación</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each data}}
+                  <tr>
+                    <td>
+                      <a href="/admin/laboratorios/{{ usbid }}">
+                        {{ name }}
+                      </a>
+                    </td>
+                    <td>{{ area }}</td>
+                    <td>{{ location_main_office }}</td>
+                    <td>
+                      <a type="button" onclick="customConfirm(`{{usbid}}`, '/admin/laboratorios', `{{name}}`)" title="Eliminar" class="btn btn-sm btn-danger">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </a>
+                      <a href="/admin/laboratorios/{{usbid}}/edit" title="Editar" class="btn btn-sm btn-info text-white">
+                        <i class="fa-solid fa-pencil"></i>
+                      </a>
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          {{else}}
+            <div class="alert alert-primary d-flex justify-content-center py-auto my-0">
+              <p class="text-primary m-0">No hay registros disponibles</p>
+            </div>
+          {{/if}}
+        </div>
+        <!-- End of card body content -->
+      </div>
+</div>

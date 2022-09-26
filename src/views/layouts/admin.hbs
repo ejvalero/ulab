@@ -15,11 +15,11 @@
   {{!-- Font awesome icons --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  {{!-- Admin styles --}}
+  {{!-- Conditional styles --}}
   <link rel="stylesheet" href="/css/admin.css">
 
-  {{!-- Data tables --}}
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css"/>
+  {{!-- Sweetalert2 --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.19/sweetalert2.css" integrity="sha512-p06JAs/zQhPp/dk821RoSDTtxZ71yaznVju7IHe85CPn9gKpQVzvOXwTkfqCyWRdwo+e6DOkEKOWPmn8VE9Ekg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -28,5 +28,23 @@
   {{{ body }}}
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.19/sweetalert2.min.js" integrity="sha512-8EbzTdONoihxrKJqQUk1W6Z++PXPHexYlmSfizYg7eUqz8NgScujWLqqSdni6SRxx8wS4Z9CQu0eakmPLtq0HA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    const customConfirm = (uniqueId, path, name) => {
+      Swal.fire({
+        title: 'Eliminar ' + name,
+        text: 'Esta acción no ne puede deshacer',
+        showCancelButton: true,
+        icon: 'warning',
+        confirmButtonText: 'Sí, eliminar'
+      })
+      .then( result => {
+        const { isConfirmed } = result;
+        if(isConfirmed) {
+          window.location = `${path}/${uniqueId}/delete`;
+        }
+      })
+    }
+  </script>
 </body>
 </html>

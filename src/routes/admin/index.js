@@ -9,16 +9,28 @@ const router = express.Router();
 router.get(
   '/',
   (req, res) => {
-    res.send('Running happily from ADMIN PANEL');
+    res.render('main', {layout: 'admin'});
   }
 )
 
-router.use('/laboratorios', require('./labs'))
+/**
+ * Laboratories
+ */
+router.use('/laboratorios', require('./labs'));
 
+/**
+ * Personal (team membern info)
+ */
+router.use('/personal', require('./personal'));
 
 
 /**
- * 
+ * Rando routes
+ */
+router.use('*', (req, res) => res.status(404).send('Page not found'));
+
+
+/**
  * export routes
  */
 module.exports = router;

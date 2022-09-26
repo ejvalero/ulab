@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/', require('./client'));
-//router.use('/admin', require('./admin'));
+router.get(
+  '/',
+  (req, res) => {
+    res.render('client', { layout: 'client' })
+  }
+)
+
 
 module.exports = router;
