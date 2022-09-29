@@ -19,9 +19,10 @@ pool.getConnection(
         'PROTOCOL_CONNECTION_LOST' : 'The database connection was closed',
         'ER_CON_COUNT_ERROR' : 'The database has too many connections',
         'ECONNREFUSED': 'The database connection was refused',
-        'ER_ACCESS_DENIED_ERROR': 'Invalid credentials'
+        'ER_ACCESS_DENIED_ERROR': 'Invalid credentials',
+        'PROTOCOL_SEQUENCE_TIMEOUT': 'Connection has taken too much time to happen'
       };
-      console.log(`ERROR CONNECTING DB: ${ messages[ code ]}`);
+      console.log(`ERROR CONNECTING DB: ${ code }`);
     }
 
     // if no errors, go ahead
