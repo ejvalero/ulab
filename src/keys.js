@@ -1,8 +1,8 @@
 module.exports = {
   database: {
-    host:     'ulab0.up.railway.app',
+    host:     'emanuelvalero.com',
     user:     'emanuelv_ulabv00',
-    password: 'nfu9UwULc',
+    password: '7xIJ9CGxc',
     database: 'emanuelv_ulabv00'
   },
 }
