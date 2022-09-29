@@ -3,7 +3,6 @@ module.exports = {
     host:     'ulab0.up.railway.app',
     user:     'emanuelv_ulabv00',
     password: 'nfu9UwULc',
-    database: 'emanuelv_ulabv00',
-    waitForConnections: true,
+    database: 'emanuelv_ulabv00'
   },
 }
