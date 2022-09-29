@@ -1,8 +1,8 @@
 module.exports = {
   database: {
-    host:     'sql204.epizy.com',
+    host:     'db4free.net',
     user:     'epiz_32688357',
     password: 'vH2qI5taJ4',
-    database: 'epiz_32688357_ulab0'
+    database: 'epiz_32688357_ul'
   },
 }
